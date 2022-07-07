@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page import="com.spring.webmvc.chap01.member.repository.*" %>
-<%@ page import="com.spring.webmvc.chap01.member.model.*" %>
+<%@ page import="com.spring.webmvc.member.repository.*" %>
+<%@ page import="com.spring.webmvc.member.model.*" %>
 <%@ page import="java.util.*" %>
 
-<%!  private MemberRepository repository = MemoryMemberRepo.getInstance();  %>
+<%! private MemberRepository repository = MemoryMemberRepo.getInstance();  %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
     
@@ -27,6 +28,8 @@
         <% } %>
 
     </ul>
+
+    <script></script>
 
 </body>
 </html>
