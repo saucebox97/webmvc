@@ -63,7 +63,7 @@ public class ModelController {
     //==3. @ModelAttribute 사용
 
     // age데이터 처리 // model/age-check
-    @RequestMapping("ModelURL.CHECK") // ModelAttribute를쓰면 64줄을 생략가능
+    @RequestMapping(ModelURL.CHECK) // ModelAttribute를쓰면 64줄을 생략가능
     // ModelAttribute("age")에서 ("age")는 생략가능 뒤에 age 랑 이름이같다면
     public String check(@ModelAttribute("age") int age, Model model) {
         // 나이로 출생년도 구해주기 (한국나이)
