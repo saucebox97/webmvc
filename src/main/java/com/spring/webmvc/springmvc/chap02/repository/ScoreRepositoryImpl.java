@@ -22,7 +22,7 @@ public class ScoreRepositoryImpl implements ScoreRepository{
 //        this.template = template;
 //    } // @RequiredArgsConstructor를 쓰면 이걸(생성자) 만들어줌
 
-    @Override // nextval 1씩 증가를 시켜주는 코드
+    @Override // nextval 1씩 증가를 시켜주는 코드 // 들어갈때 ''붙여서 들어감 예 : 'score'
     public boolean save(Score score) {
         String sql = "INSERT INTO tbl_score " +
                 "VALUES (seq_tbl_score.nextval, ?,?,?,?,?,?,?)";
@@ -33,8 +33,20 @@ public class ScoreRepositoryImpl implements ScoreRepository{
     }
 
     @Override
-    public List<Score> findAll() {
-        String sql = "SELECT * FROM tbl_score";
+    public List<Score> findAll(String sort) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM tbl_score");
+
+        switch(sort) {
+            case "num":
+                sql.append(" ORDER BY stu_num");
+                break;
+            case "name":
+                sql.append(" ORDER BY stu_name");
+                break;
+            case "average":
+                sql.append(" ORDER BY average DESC");
+                break;
+        }
         // SELECT문의 경우는 query()
 //        return template.query(sql, new ScoreRowMapper());
         /* 클래스를 안만들어도 할수있음
@@ -45,7 +57,7 @@ public class ScoreRepositoryImpl implements ScoreRepository{
             }
         });
          */
-        return template.query(sql, (rs, rowNum) -> new Score(rs));
+        return template.query(sql.toString(), (rs, rowNum) -> new Score(rs));
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import static com.spring.webmvc.springmvc.chap02.domain.Grade.*;
 
-@Setter @Getter @ToString
+@Setter @Getter @ToString @Log4j2
 //@NoArgsConstructor
 public class Score {
 
@@ -26,7 +26,7 @@ public class Score {
     private Grade grade; // 학점
 
     public Score() {
-
+        log.trace("Score 기본 생성자 호출!!!");
     }
 
     public Score(String name, int kor, int eng, int math) {
@@ -68,6 +68,42 @@ public class Score {
         } else {
             this.grade = F;
         }
+    }
+
+    public void setName(String name) {
+        log.trace("setName호출");
+        this.name = name;
+    }
+
+    public void setKor(int kor) {
+        log.trace("setKor호출");
+        this.kor = kor;
+    }
+
+    public void setEng(int eng) {
+        log.trace("setEng호출");
+        this.eng = eng;
+    }
+
+    public void setMath(int math) {
+        log.trace("setMath호출");
+        this.math = math;
+    }
+
+    public void setStuNum(int stuNum) {
+        this.stuNum = stuNum;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 
 }

@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- reset css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    
+
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    
+
+
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
@@ -57,13 +57,27 @@
             padding: 200px 50px 100px;
             font-size: 1.5em;
         }
+
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+
+            width: 50%;
+        }
+        .list-header .sort-link-group {
+            display: flex;
+
+        }
+        .list-header .sort-link-group div {
+            margin-right: 20px;
+        }
+
     </style>
 </head>
 
 <body>
 
     <div class="wrap">
-
 
         <section class="score">
             <h1>시험 점수 등록</h1>
@@ -81,6 +95,7 @@
                     # 수학: <input type="text" name="math">
                 </label>
                 <label>
+                    <!-- submit 서버로 이동하는 버튼 button 기능이없음 -->
                     <button type="submit">확인</button>
                     <button id="go-home" type="button">홈화면으로</button>
                 </label>
@@ -89,7 +104,15 @@
             <hr>
 
             <ul class="score-list">
-                <li>총 학생 수: ${scores.size()}명</li>
+                <li class="list-header">
+                    <div class="count">총 학생 수: ${scores.size()}명</div>
+                    <div class="sort-link-group">
+                        <div><a href="/score/list?sort=num">학번순</a></div>
+                        <div><a href="/score/list?sort=name">이름순</a></div>
+                        <div><a href="/score/list?sort=average">평균순</a></div>
+                    </div>
+
+                </li>
 
                 <c:forEach var="s" items="${scores}">
                     <li>
@@ -118,7 +141,7 @@
             //console.log('클릭이벤트 발동!');
 
             if (confirm('정말로 삭제하시겠습니까?')) {
-                //삭제 진행                
+                //삭제 진행
                 location.href = e.target.getAttribute('href');
             } else {
                 //삭제 취소
