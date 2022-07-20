@@ -1,6 +1,7 @@
 package com.spring.webmvc.springmvc.chap02.controller;
 
 import com.spring.webmvc.springmvc.chap02.domain.Score;
+import com.spring.webmvc.springmvc.chap02.repository.ScoreMapper;
 import com.spring.webmvc.springmvc.chap02.repository.ScoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ScoreController {
 
     private final ScoreRepository repository;
+//    private final ScoreMapper repository;
 
 //    @Autowired
 //    public ScoreController(ScoreRepository repository) {
